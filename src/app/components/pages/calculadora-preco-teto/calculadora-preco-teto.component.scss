@@ -1,0 +1,14 @@
+main.calculadora-preco-teto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .card {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1.5rem 1rem;
+    background-color: #f8f9fa;
+    border: solid 1px #cccccc;
+    border-radius: 10px;
+  }
+}
