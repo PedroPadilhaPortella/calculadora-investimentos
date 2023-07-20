@@ -1,0 +1,51 @@
+<main class="calculadora-juros-compostos">
+  <app-page-title [title]="title" [description]="description"></app-page-title>
+
+  <form class="card" [formGroup]="form" (submit)="submit()">
+
+    <div class="card-item inicial">
+      <label for="">Valor inicial</label>
+      <div class="input-group">
+        <span>R$</span>
+        <input type="number" id="valorInicial" formControlName="valorInicial" placeholder="00,00">
+      </div>
+    </div>
+
+    <div class="card-item aportes">
+      <label for="">Valor mensal</label>
+      <div class="input-group">
+        <span>R$</span>
+        <input type="number" id="valorMensal" formControlName="valorMensal" placeholder="00,00">
+      </div>
+    </div>
+
+    <div class="card-item juros">
+      <label for="">Taxa de juros</label>
+      <div class="input-group">
+        <span>%</span>
+        <input type="number" id="taxaJuros" formControlName="taxaJuros" placeholder="00,00">
+        <select id="tipoTaxaJuros" formControlName="tipoTaxaJuros">
+          <!-- <option *ngFor="let option of getTypeOptions()" 
+            [value]="option.key">{{ option.value }}</option> -->
+          <option value="anual">anual</option>
+          <option value="mensal">mensal</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card-item periodos">
+      <label for="">Período</label>
+      <div class="input-group">
+        <input type="number" id="periodos" formControlName="periodos" placeholder="00,00">
+        <select id="tipoPeriodo" formControlName="tipoPeriodo">
+          <option value="anos">anos(s)</option>
+          <option value="meses">mes(es)</option>
+        </select>
+      </div>
+    </div>
+
+    <input type="submit" value="Calcular" class="calcularBtn btn">
+
+    <input type="button" value="Limpar" class="limparBtn link">
+  </form>
+</main>
