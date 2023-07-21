@@ -16,6 +16,22 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
+  valorTotal: number = 0;
+  valorInvestido: number = 0;
+  jurosAcumulado: number = 0;
+
+  isSubmitted = false;
+
+  tiposTaxaJuros = [
+    { key: TipoTaxaJuros.ANUAL, value: TipoTaxaJuros.ANUAL },
+    { key: TipoTaxaJuros.MENSAL, value: TipoTaxaJuros.MENSAL },
+  ]
+
+  tiposPeriodo = [
+    { key: TipoPeriodo.ANOS, value: TipoPeriodo.ANOS },
+    { key: TipoPeriodo.MESES, value: TipoPeriodo.MESES },
+  ]
+
   constructor(
     private formBuilder: FormBuilder,
   ) { }
@@ -26,18 +42,19 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-      valorInicial: [null, [Validators.required]],
-      valorMensal: [null, [Validators.required]],
+      valorInicial: [null],
+      valorMensal: [null],
       taxaJuros: [null, [Validators.required]],
       periodos: [null, [Validators.required]],
-      tipoTaxaJuros: ['anual'],
-      tipoPeriodo: ['anos']
+      tipoTaxaJuros: ['anual', [Validators.required]],
+      tipoPeriodo: ['anos', [Validators.required]]
     });
   }
 
 
   submit() {
     if (this.form.valid) {
+      this.isSubmitted = true;
       const jurosComposto = new JurosCompostosFormula(
         this.form.controls['valorInicial'].value,
         this.form.controls['valorMensal'].value,
@@ -47,9 +64,10 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
         this.form.controls['tipoPeriodo'].value,
       );
 
-      console.warn(jurosComposto.getMontanteFinal());
-      console.warn(jurosComposto.getValorInvestido());
-      console.warn(jurosComposto.getJurosAcumulados());
+      this.valorTotal = jurosComposto.getMontanteFinal();
+      this.valorInvestido = jurosComposto.getValorInvestido();
+      this.jurosAcumulado = jurosComposto.getJurosAcumulados();
     }
   }
+
 }

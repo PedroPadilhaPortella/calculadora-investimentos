@@ -9,10 +9,7 @@
         <span>R$</span>
         <input type="number" id="valorInicial" formControlName="valorInicial" placeholder="00,00">
       </div>
-      <app-form-field-error 
-        [form-control]="form.get('valorInicial')" 
-        field-name="Valor Inicial"
-      ></app-form-field-error>
+      <app-form-field-error [form-control]="form.get('valorInicial')" field-name="Valor Inicial"></app-form-field-error>
     </div>
 
     <div class="card-item aportes">
@@ -21,10 +18,7 @@
         <span>R$</span>
         <input type="number" id="valorMensal" formControlName="valorMensal" placeholder="00,00">
       </div>
-      <app-form-field-error 
-        [form-control]="form.get('valorMensal')" 
-        field-name="Valor Mensal"
-      ></app-form-field-error>
+      <app-form-field-error [form-control]="form.get('valorMensal')" field-name="Valor Mensal"></app-form-field-error>
     </div>
 
     <div class="card-item juros">
@@ -33,16 +27,12 @@
         <span>%</span>
         <input type="number" id="taxaJuros" formControlName="taxaJuros" placeholder="00,00">
         <select id="tipoTaxaJuros" formControlName="tipoTaxaJuros">
-          <!-- <option *ngFor="let option of getTypeOptions()" 
-            [value]="option.key">{{ option.value }}</option> -->
-          <option value="anual">anual</option>
-          <option value="mensal">mensal</option>
+          <option *ngFor="let tipo of tiposTaxaJuros" [value]="tipo.key">
+            {{ tipo.value }}
+          </option>
         </select>
       </div>
-      <app-form-field-error 
-        [form-control]="form.get('taxaJuros')" 
-        field-name="Taxa de Juros"
-      ></app-form-field-error>
+      <app-form-field-error [form-control]="form.get('taxaJuros')" field-name="Taxa de Juros"></app-form-field-error>
     </div>
 
     <div class="card-item periodos">
@@ -50,14 +40,12 @@
       <div class="input-group">
         <input type="number" id="periodos" formControlName="periodos" placeholder="00,00">
         <select id="tipoPeriodo" formControlName="tipoPeriodo">
-          <option value="anos">anos(s)</option>
-          <option value="meses">mes(es)</option>
+          <option *ngFor="let tipo of tiposPeriodo" [value]="tipo.key">
+            {{ tipo.value }}
+          </option>
         </select>
       </div>
-      <app-form-field-error 
-        [form-control]="form.get('periodos')" 
-        field-name="Periodos"
-      ></app-form-field-error>
+      <app-form-field-error [form-control]="form.get('periodos')" field-name="Periodos"></app-form-field-error>
     </div>
 
     <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
@@ -65,12 +53,21 @@
     <input type="reset" value="Limpar" class="limparBtn link">
   </form>
 
-  <section class="resultados">
+  <section class="resultados" *ngIf="isSubmitted">
     <h3>Resultados</h3>
-    <div class="">
-      <div class="card-valor-total"></div>
-      <div class="card-valor-investido"></div>
-      <div class="card-total-juros"></div>
+    <div class="cards-results">
+      <div class="card-valor-total card-result">
+        <span>Valor total final</span>
+        <span class="valor-total result">{{valorTotal | currency:'BRL':'symbol':'1.2-2'}}</span>
+      </div>
+      <div class="card-valor-investido card-result">
+        <span>Valor total investido</span>
+        <span class="valor-investido result">{{valorInvestido | currency:'BRL':'symbol':'1.2-2'}}</span>
+      </div>
+      <div class="card-total-juros card-result">
+        <span>Total em juros</span>
+        <span class="total-juros result">{{jurosAcumulado | currency:'BRL':'symbol':'1.2-2' }}</span>
+      </div>
     </div>
   </section>
 </main>

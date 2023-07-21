@@ -24,40 +24,7 @@ export class JurosCompostosFormula {
   ) {
     this.calcularMontanteComAportes()
   }
-
-  private calcularMontanteComAportes() {
-    console.warn(
-      this.capitalInitial,
-      this.aporteMensal,
-      this.taxaJuros,
-      this.periodo,
-      this.tipoTaxaJuros,
-      this.tipoPeriodo
-    )
-    // Verifica se o período está em anos ou meses e ajusta a taxa de juros para a base correta
-    const numeroDePeriodosPorAno = this.tipoPeriodo === TipoPeriodo.ANOS ? 12 : 1;
-    const taxaDeJurosPorPeriodo = this.tipoTaxaJuros === TipoTaxaJuros.ANUAL
-      ? this.taxaJuros / (numeroDePeriodosPorAno * 100) : this.taxaJuros / 100;
-
-    // Calcula o número total de períodos de investimento
-    const totalDePeriodos = this.tipoPeriodo === TipoPeriodo.ANOS ? this.periodo * numeroDePeriodosPorAno : this.periodo;
-
-    // Inicializa o montante com o valor inicial
-    let montante = this.capitalInitial;
-
-    // Calcula o montante final com aportes mensais e juros compostos
-    for (let i = 0; i < totalDePeriodos; i++) {
-      // Calcula os juros compostos no montante atual
-      montante *= 1 + taxaDeJurosPorPeriodo;
-      // Aportes realizados no final de cada mês (após os juros compostos)
-      montante += this.aporteMensal;
-    }
-
-    this._montanteFinal = Math.round(montante);
-    this._valorInvestido = Math.round(this.capitalInitial + (this.aporteMensal * totalDePeriodos));
-    this._jurosAcumulados = Math.round(this._montanteFinal - this._valorInvestido);
-  }
-
+  
   getMontanteFinal(): number {
     return this._montanteFinal;
   }
@@ -68,5 +35,41 @@ export class JurosCompostosFormula {
 
   getJurosAcumulados(): number {
     return this._jurosAcumulados;
+  }
+
+  private calcularMontanteComAportes() {
+    console.warn(
+      this.capitalInitial,
+      this.aporteMensal,
+      this.taxaJuros,
+      this.periodo,
+      this.tipoTaxaJuros,
+      this.tipoPeriodo
+    );
+
+    // Verifica se o período está em anos ou meses e ajusta a taxa de juros para a base correta
+    const taxaDeJurosPeriodo = (this.tipoTaxaJuros === TipoTaxaJuros.ANUAL)
+      ? this.taxaJuros / (12 * 100) 
+      : this.taxaJuros / 100;
+
+    // Converte os periodos de anos para meses
+    const totalDePeriodos = (this.tipoPeriodo === TipoPeriodo.ANOS) 
+      ? this.periodo * 12 
+      : this.periodo;
+
+    // Inicializa o montante com o valor inicial
+    let montante = this.capitalInitial;
+
+    // Calcula o montante final com aportes mensais e juros compostos
+    for (let i = 0; i < totalDePeriodos; i++) {
+      // Calcula os juros compostos no montante atual
+      montante *= 1 + taxaDeJurosPeriodo;
+      // Aportes realizados no final de cada mês (após os juros compostos)
+      montante += this.aporteMensal;
+    }
+
+    this._montanteFinal = Math.round(montante);
+    this._valorInvestido = Math.round(this.capitalInitial + (this.aporteMensal * totalDePeriodos));
+    this._jurosAcumulados = Math.round(this._montanteFinal - this._valorInvestido);
   }
 }
