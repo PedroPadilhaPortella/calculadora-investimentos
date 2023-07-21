@@ -9,6 +9,10 @@
         <span>R$</span>
         <input type="number" id="valorInicial" formControlName="valorInicial" placeholder="00,00">
       </div>
+      <app-form-field-error 
+        [form-control]="form.get('valorInicial')" 
+        field-name="Valor Inicial"
+      ></app-form-field-error>
     </div>
 
     <div class="card-item aportes">
@@ -17,6 +21,10 @@
         <span>R$</span>
         <input type="number" id="valorMensal" formControlName="valorMensal" placeholder="00,00">
       </div>
+      <app-form-field-error 
+        [form-control]="form.get('valorMensal')" 
+        field-name="Valor Mensal"
+      ></app-form-field-error>
     </div>
 
     <div class="card-item juros">
@@ -31,6 +39,10 @@
           <option value="mensal">mensal</option>
         </select>
       </div>
+      <app-form-field-error 
+        [form-control]="form.get('taxaJuros')" 
+        field-name="Taxa de Juros"
+      ></app-form-field-error>
     </div>
 
     <div class="card-item periodos">
@@ -42,10 +54,23 @@
           <option value="meses">mes(es)</option>
         </select>
       </div>
+      <app-form-field-error 
+        [form-control]="form.get('periodos')" 
+        field-name="Periodos"
+      ></app-form-field-error>
     </div>
 
-    <input type="submit" value="Calcular" class="calcularBtn btn">
+    <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
 
-    <input type="button" value="Limpar" class="limparBtn link">
+    <input type="reset" value="Limpar" class="limparBtn link">
   </form>
+
+  <section class="resultados">
+    <h3>Resultados</h3>
+    <div class="">
+      <div class="card-valor-total"></div>
+      <div class="card-valor-investido"></div>
+      <div class="card-total-juros"></div>
+    </div>
+  </section>
 </main>

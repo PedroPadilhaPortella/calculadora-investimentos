@@ -26,10 +26,10 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-      valorInicial: [null],
-      valorMensal: [null],
-      taxaJuros: [null],
-      periodos: [null],
+      valorInicial: [null, [Validators.required]],
+      valorMensal: [null, [Validators.required]],
+      taxaJuros: [null, [Validators.required]],
+      periodos: [null, [Validators.required]],
       tipoTaxaJuros: ['anual'],
       tipoPeriodo: ['anos']
     });

@@ -9,6 +9,7 @@ import { CalculadoraPrecoTetoComponent } from './components/pages/calculadora-pr
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PageTitleComponent } from './components/shared/page-title/page-title.component';
+import { FormFieldErrorComponent } from './components/shared/form-field-error/form-field-error.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PageTitleComponent } from './components/shared/page-title/page-title.co
     FooterComponent,
     CalculadoraPrecoTetoComponent,
     PageTitleComponent,
-    CalculadoraJurosCompostosComponent
+    CalculadoraJurosCompostosComponent,
+    FormFieldErrorComponent,
   ],
   imports: [
     BrowserModule,
