@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { JurosCompostosFormula } from '../../../models/formulas/juros-compostos.formula';
+import { TipoTaxaJuros } from 'src/app/enums/TipoTaxaJuros.enum';
+import { TipoPeriodo } from 'src/app/enums/TipoPeriodo.enum';
 
 @Component({
   selector: 'app-calculadora-juros-compostos',
@@ -15,7 +18,7 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -27,13 +30,26 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
       valorMensal: [null],
       taxaJuros: [null],
       periodos: [null],
-      tipoTaxaJuros: [null],
-      tipoPeriodo: [null]
+      tipoTaxaJuros: ['anual'],
+      tipoPeriodo: ['anos']
     });
   }
 
 
   submit() {
-    console.warn(this.form.value);
+    if (this.form.valid) {
+      const jurosComposto = new JurosCompostosFormula(
+        this.form.controls['valorInicial'].value,
+        this.form.controls['valorMensal'].value,
+        this.form.controls['taxaJuros'].value,
+        this.form.controls['periodos'].value,
+        this.form.controls['tipoTaxaJuros'].value,
+        this.form.controls['tipoPeriodo'].value,
+      );
+
+      console.warn(jurosComposto.getMontanteFinal());
+      console.warn(jurosComposto.getValorInvestido());
+      console.warn(jurosComposto.getJurosAcumulados());
+    }
   }
 }
