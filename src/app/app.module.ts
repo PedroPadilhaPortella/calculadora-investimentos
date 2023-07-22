@@ -12,6 +12,9 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { FormFieldErrorComponent } from './components/shared/form-field-error/form-field-error.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PageTitleComponent } from './components/shared/page-title/page-title.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { CalculadoraReservaDeEmergenciaComponent } from './components/pages/calculadora-reserva-de-emergencia/calculadora-reserva-de-emergencia.component';
+import { CardComponent } from './components/shared/card/card.component';
 
 registerLocaleData(localePt);
 
@@ -24,6 +27,9 @@ registerLocaleData(localePt);
     PageTitleComponent,
     CalculadoraJurosCompostosComponent,
     FormFieldErrorComponent,
+    HomeComponent,
+    CalculadoraReservaDeEmergenciaComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
