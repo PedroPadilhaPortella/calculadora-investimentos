@@ -9,7 +9,6 @@
         <span>R$</span>
         <input type="number" id="valorInicial" formControlName="valorInicial" placeholder="00,00">
       </div>
-      <app-form-field-error [form-control]="form.get('valorInicial')" field-name="Valor Inicial"></app-form-field-error>
     </div>
 
     <div class="card-item aportes">
@@ -18,7 +17,6 @@
         <span>R$</span>
         <input type="number" id="valorMensal" formControlName="valorMensal" placeholder="00,00">
       </div>
-      <app-form-field-error [form-control]="form.get('valorMensal')" field-name="Valor Mensal"></app-form-field-error>
     </div>
 
     <div class="card-item juros">
@@ -27,12 +25,13 @@
         <span>%</span>
         <input type="number" id="taxaJuros" formControlName="taxaJuros" placeholder="00,00">
         <select id="tipoTaxaJuros" formControlName="tipoTaxaJuros">
-          <option *ngFor="let tipo of tiposTaxaJuros" [value]="tipo.key">
+          <option *ngFor="let tipo of tiposTaxaJuros"  [value]="tipo.key" >
             {{ tipo.value }}
           </option>
         </select>
       </div>
-      <app-form-field-error [form-control]="form.get('taxaJuros')" field-name="Taxa de Juros"></app-form-field-error>
+      <app-form-field-error [form-control]="form.get('taxaJuros')" field-name="Taxa de Juros">
+      </app-form-field-error>
     </div>
 
     <div class="card-item periodos">
@@ -45,7 +44,8 @@
           </option>
         </select>
       </div>
-      <app-form-field-error [form-control]="form.get('periodos')" field-name="Periodos"></app-form-field-error>
+      <app-form-field-error [form-control]="form.get('periodos')" field-name="Periodos">
+      </app-form-field-error>
     </div>
 
     <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">

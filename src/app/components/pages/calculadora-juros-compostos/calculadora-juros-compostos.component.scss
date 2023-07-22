@@ -230,5 +230,31 @@ main.calculadora-juros-compostos {
       }
     }
   }
+}
 
+/* Mobile Version */
+@media (max-width: 850px) {
+  main.calculadora-juros-compostos {
+
+    form.card {
+      display: flex;
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    section.resultados {
+
+      h3 {
+        text-align: center;
+      }
+      
+      .cards-results {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }

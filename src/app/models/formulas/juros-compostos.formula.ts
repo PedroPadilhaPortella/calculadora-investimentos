@@ -38,15 +38,6 @@ export class JurosCompostosFormula {
   }
 
   private calcularMontanteComAportes() {
-    console.warn(
-      this.capitalInitial,
-      this.aporteMensal,
-      this.taxaJuros,
-      this.periodo,
-      this.tipoTaxaJuros,
-      this.tipoPeriodo
-    );
-
     // Verifica se o período está em anos ou meses e ajusta a taxa de juros para a base correta
     const taxaDeJurosPeriodo = (this.tipoTaxaJuros === TipoTaxaJuros.ANUAL)
       ? this.taxaJuros / (12 * 100) 
