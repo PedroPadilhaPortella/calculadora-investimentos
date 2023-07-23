@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { JurosCompostosFormula } from '../../../models/formulas/juros-compostos.formula';
-import { TipoTaxaJuros } from 'src/app/enums/TipoTaxaJuros.enum';
 import { TipoPeriodo } from 'src/app/enums/TipoPeriodo.enum';
+import { TipoTaxaJuros } from 'src/app/enums/TipoTaxaJuros.enum';
+import { JurosCompostosFormula, JurosCompostosType } from './../../../models/formulas/juros-compostos.formula';
 
 @Component({
   selector: 'app-calculadora-juros-compostos',
@@ -14,12 +14,8 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
   title = 'Calculadora de Juros Compostos'
   description = 'O juros composto pode ser utilizado para guiar seus investimentos, projetando o rendimento para seus investimentos no futuro.'
 
+  jurosComposto!: JurosCompostosType;
   form: FormGroup = new FormGroup({});
-
-  valorTotal: number = 0;
-  valorInvestido: number = 0;
-  jurosAcumulado: number = 0;
-
   isSubmitted = false;
 
   tiposTaxaJuros = [
@@ -51,23 +47,17 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
     });
   }
 
-
   submit() {
     if (this.form.valid) {
       this.isSubmitted = true;
-      const jurosComposto = new JurosCompostosFormula(
+      this.jurosComposto = new JurosCompostosFormula(
         this.form.controls['valorInicial'].value,
         this.form.controls['valorMensal'].value,
         this.form.controls['taxaJuros'].value,
         this.form.controls['periodos'].value,
         this.form.controls['tipoTaxaJuros'].value,
         this.form.controls['tipoPeriodo'].value,
-      );
-
-      this.valorTotal = jurosComposto.getMontanteFinal();
-      this.valorInvestido = jurosComposto.getValorInvestido();
-      this.jurosAcumulado = jurosComposto.getJurosAcumulados();
+      ).calcularMontanteComAportes();
     }
   }
-
 }

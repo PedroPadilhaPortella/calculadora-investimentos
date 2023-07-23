@@ -4,7 +4,7 @@
   <form class="card" [formGroup]="form" (submit)="submit()">
 
     <div class="card-item inicial">
-      <label for="">Valor inicial</label>
+      <label for="valorInicial">Valor inicial</label>
       <div class="input-group">
         <span>R$</span>
         <input type="number" id="valorInicial" formControlName="valorInicial" placeholder="00,00">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="card-item aportes">
-      <label for="">Valor mensal</label>
+      <label for="valorMensal">Valor mensal</label>
       <div class="input-group">
         <span>R$</span>
         <input type="number" id="valorMensal" formControlName="valorMensal" placeholder="00,00">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="card-item juros">
-      <label for="">Taxa de juros</label>
+      <label for="taxaJuros">Taxa de juros</label>
       <div class="input-group">
         <span>%</span>
         <input type="number" id="taxaJuros" formControlName="taxaJuros" placeholder="00,00">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="card-item periodos">
-      <label for="">Período</label>
+      <label for="periodos">Período</label>
       <div class="input-group">
         <input type="number" id="periodos" formControlName="periodos" placeholder="00,00">
         <select id="tipoPeriodo" formControlName="tipoPeriodo">
@@ -58,15 +58,21 @@
     <div class="cards-results">
       <div class="card-valor-total card-result">
         <span>Valor total final</span>
-        <span class="valor-total result">{{valorTotal | currency:'BRL':'symbol':'1.2-2'}}</span>
+        <span class="valor-total result">
+          {{jurosComposto.montanteFinal | currency:'BRL':'symbol':'1.2-2'}}
+        </span>
       </div>
       <div class="card-valor-investido card-result">
         <span>Valor total investido</span>
-        <span class="valor-investido result">{{valorInvestido | currency:'BRL':'symbol':'1.2-2'}}</span>
+        <span class="valor-investido result">
+          {{jurosComposto.valorInvestido | currency:'BRL':'symbol':'1.2-2'}}
+        </span>
       </div>
       <div class="card-total-juros card-result">
         <span>Total em juros</span>
-        <span class="total-juros result">{{jurosAcumulado | currency:'BRL':'symbol':'1.2-2' }}</span>
+        <span class="total-juros result">
+          {{jurosComposto.jurosAcumulados | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
       </div>
     </div>
   </section>

@@ -1,1 +1,79 @@
-<p>calculadora-reserva-de-emergencia works!</p>
+<main class="calculadora-reserva-de-emergencia">
+  <app-page-title [title]="title" [description]="description"></app-page-title>
+
+  <form class="card" [formGroup]="form" (submit)="submit()">
+
+    <div class="card-row">
+      <div class="card-item">
+        <label for="custoFixo">Custo fixo</label>
+        <div class="input-group">
+          <span>R$</span>
+          <input type="number" id="custoFixo" formControlName="custoFixo" placeholder="00,00">
+        </div>
+      </div>
+
+      <div class="card-item">
+        <label for="salario">Salário Mensal</label>
+        <div class="input-group">
+          <span>R$</span>
+          <input type="number" id="salario" formControlName="salario" placeholder="00,00">
+        </div>
+      </div>
+
+      <div class="card-item">
+        <label for="economiaMensal">Quanto você guarda por mês</label>
+        <div class="input-group">
+          <input type="number" id="economiaMensal" formControlName="economiaMensal" class="after">
+          <span class="after">%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-row">
+      <div class="card-item">
+        <label for="">Profissão</label>
+        <div class="input-group">
+          <label class="input-radio-item" *ngFor="let profissao of profissoes">
+            <input type="radio" id="profissao" formControlName="profissao" [value]="profissao">
+            {{ profissao }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-row buttons">
+      <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
+      <input type="reset" value="Limpar" class="limparBtn">
+    </div>
+  </form>
+
+  <section class="resultados" *ngIf="isSubmitted">
+    <h3>
+      Para trabalhadores da modalidade 
+      <span class="verde">{{ reservaDeEmergencia.profissao }}</span>
+      o ideal é que a reserva de emergência contemple
+      <span class="verde">{{ reservaDeEmergencia.reservaMeses }} meses</span>
+      dos custos fixos.
+    </h3>
+    <div class="cards-results">
+      <div class="card-valor-total card-result">
+        <span>Sua reserva de emergência deve ser de</span>
+        <span class="valor-total result">
+          {{ reservaDeEmergencia.reservaDeEmergencia | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
+      </div>
+      <div class="card-valor-investido card-result">
+        <span>Guardando</span>
+        <span class="valor-investido result">
+          {{ reservaDeEmergencia.valorGuardado }}% do seu salário por mês
+        </span>
+      </div>
+      <div class="card-total-juros card-result">
+        <span>Meses para completar sua reserva:</span>
+        <span class="total-juros result">
+          {{ reservaDeEmergencia.tempoReservaEmergencia }}
+        </span>
+      </div>
+    </div>
+  </section>
+</main>
