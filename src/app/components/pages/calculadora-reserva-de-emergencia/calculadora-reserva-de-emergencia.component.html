@@ -32,7 +32,7 @@
     <div class="card-row">
       <div class="card-item">
         <label for="">Profissão</label>
-        <div class="input-group">
+        <div class="input-group radio-group">
           <label class="input-radio-item" *ngFor="let profissao of profissoes">
             <input type="radio" id="profissao" formControlName="profissao" [value]="profissao">
             {{ profissao }}
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="card-row buttons">
+    <div class="card-row">
       <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
       <input type="reset" value="Limpar" class="limparBtn">
     </div>

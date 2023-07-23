@@ -33,7 +33,8 @@ export class ReservaDeEmergenciaFormula {
       reservaDeEmergencia = this.custoFixo * reservaMeses;
     }
 
-    const tempoReservaEmergencia = reservaDeEmergencia / (this.salario * (this.economiaMensal / 100));
+    const tempoReservaEmergencia = Math.ceil(
+      reservaDeEmergencia / (this.salario * (this.economiaMensal / 100)));
 
     return {
       profissao: this.profissao,
