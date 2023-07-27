@@ -1,7 +1,97 @@
 <main class="calculadora-preco-teto">
   <app-page-title [title]="title" [description]="description"></app-page-title>
 
-  <div class="card">
-    
-  </div>
+  <form class="card" [formGroup]="form" (submit)="submit()">
+
+    <div class="card-item ticket">
+      <label for="ticket">Ticket da Ação</label>
+      <div class="input-group">
+        <input type="text" id="ticket" formControlName="ticket" placeholder="BBAS3">
+      </div>
+    </div>
+
+    <div class="card-item preco-atual">
+      <label for="preco">Preço Atual da Ação</label>
+      <div class="input-group">
+        <span>R$</span>
+        <input type="number" id="preco" formControlName="preco" placeholder="00,00">
+      </div>
+    </div>
+
+    <div class="card-item yield">
+      <label for="yield">Yield Esperado</label>
+      <div class="input-group">
+        <input type="number" id="yield" formControlName="yield" placeholder="6%" class="after">
+        <span class="after">%</span>
+      </div>
+    </div>
+
+    <div class="card-item dividendo-primeiro-ano">
+      <label for="dividendosAno1">Dividendo pago em {{ lastYears[0] }}</label>
+      <div class="input-group">
+        <span>R$</span>
+        <input type="number" id="dividendosAno1" formControlName="dividendosAno1" placeholder="00,00">
+      </div>
+    </div>
+
+    <div class="card-item dividendo-segundo-ano">
+      <label for="dividendosAno2">Dividendo pago em {{ lastYears[1] }}</label>
+      <div class="input-group">
+        <span>R$</span>
+        <input type="number" id="dividendosAno2" formControlName="dividendosAno2" placeholder="00,00">
+      </div>
+    </div>
+
+    <div class="card-item dividendo-terceiro-ano">
+      <label for="dividendosAno3">Dividendo pago em {{ lastYears[2] }}</label>
+      <div class="input-group">
+        <span>R$</span>
+        <input type="number" id="dividendosAno3" formControlName="dividendosAno3" placeholder="00,00">
+      </div>
+    </div>
+
+    <div>
+      <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
+    </div>
+
+    <div class="empty" *ngIf="innerWidth > 850"></div>
+
+    <div>
+      <input type="reset" value="Limpar" class="limparBtn link">
+    </div>
+
+  </form>
+
+  <section class="resultados" *ngIf="isSubmitted">
+    <h3>
+      Considerando a média dos dividendos dos últimos <span class="strong">3 anos</span>,
+      o dividendo projetado para <span class="strong">{{currentYear}}</span> é de
+      <span class="verde">{{1.44 | currency:'BRL':'symbol':'1.2-2'}}</span>,
+      para receber <span class="strong">6%</span> de dividend yield,
+      o preço teto de <span class="strong">BBAS3</span> deve ser de
+      <span class="verde">{{45.22 | currency:'BRL':'symbol':'1.2-2'}}</span>.<br>
+      Com um preço atual de <span class="strong">{{57.99 | currency:'BRL':'symbol':'1.2-2' }}</span>,
+      a margem de segurança de BBAS3 é de <span class="vermelho">-24%</span>.
+    </h3>
+    <div class="cards-results">
+      <div class="card-dividendo-medio card-result">
+        <span>Dividendo Médio</span>
+        <span class="dividendo-medio result">
+          {{1.44 | currency:'BRL':'symbol':'1.2-2'}}
+        </span>
+      </div>
+      <div class="card-preco-teto card-result">
+        <span>Preço Teto (6% yield)</span>
+        <span class="preco-teto result">
+          {{45.22 | currency:'BRL':'symbol':'1.2-2'}}
+        </span>
+      </div>
+      <div class="card-margem-seguranca card-result">
+        <span>Margem de Segurança</span>
+        <span class="margem-seguranca result">
+          -24%
+        </span>
+      </div>
+    </div>
+  </section>
 </main>

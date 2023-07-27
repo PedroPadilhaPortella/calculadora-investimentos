@@ -1,3 +1,4 @@
+import { Formula } from "../../interfaces/formula.interface";
 import { TipoPeriodo } from "../../enums/TipoPeriodo.enum";
 import { TipoTaxaJuros } from "../../enums/TipoTaxaJuros.enum";
 
@@ -7,7 +8,7 @@ export type JurosCompostosType = {
   jurosAcumulados: number;
 }
 
-export class JurosCompostosFormula {
+export class JurosCompostosFormula implements Formula<JurosCompostosType> {
 
   constructor(
     private capitalInitial: number,
@@ -18,7 +19,7 @@ export class JurosCompostosFormula {
     private tipoPeriodo: TipoPeriodo
   ) { }
 
-  calcularMontanteComAportes(): JurosCompostosType {
+  calcular(): JurosCompostosType {
     // Verifica se o período está em anos ou meses e ajusta a taxa de juros para a base correta
     const taxaDeJurosPeriodo = (this.tipoTaxaJuros === TipoTaxaJuros.ANUAL)
       ? this.taxaJuros / (12 * 100)

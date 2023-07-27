@@ -48,9 +48,13 @@
       </app-form-field-error>
     </div>
 
-    <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
-
-    <input type="reset" value="Limpar" class="limparBtn link">
+    <div>
+      <input type="submit" [disabled]="this.form.invalid" value="Calcular" class="calcularBtn btn">
+    </div>
+    
+    <div>
+      <input type="reset" value="Limpar" class="limparBtn link">
+    </div>
   </form>
 
   <section class="resultados" *ngIf="isSubmitted">

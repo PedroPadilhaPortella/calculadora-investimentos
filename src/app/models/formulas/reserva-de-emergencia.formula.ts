@@ -1,4 +1,5 @@
-import { Profissoes } from "src/app/enums/Profissoes.enum";
+import { Profissoes } from "../../enums/Profissoes.enum";
+import { Formula } from "../../interfaces/formula.interface";
 
 export type ReservaType = {
   profissao: string,
@@ -8,7 +9,7 @@ export type ReservaType = {
   tempoReservaEmergencia: number,
 }
 
-export class ReservaDeEmergenciaFormula {
+export class ReservaDeEmergenciaFormula implements Formula<ReservaType> {
 
   constructor(
     private profissao: Profissoes,

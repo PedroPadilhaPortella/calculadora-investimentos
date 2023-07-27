@@ -11,8 +11,6 @@ main.calculadora-juros-compostos {
     border: solid 1px #cccccc;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: '50% 50%';
-    grid-template-rows: '50% 50%';
     grid-gap: 20px;
     grid-template-areas:
       'inicial aportes'
@@ -242,7 +240,7 @@ main.calculadora-juros-compostos {
       display: flex;
       flex-direction: column;
 
-      .btn {
+      .btn, .link {
         width: 100%;
       }
     }

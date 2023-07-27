@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TipoPeriodo } from 'src/app/enums/TipoPeriodo.enum';
-import { TipoTaxaJuros } from 'src/app/enums/TipoTaxaJuros.enum';
+import { TipoPeriodo } from '../../../enums/TipoPeriodo.enum';
+import { TipoTaxaJuros } from '../../../enums/TipoTaxaJuros.enum';
 import { JurosCompostosFormula, JurosCompostosType } from './../../../models/formulas/juros-compostos.formula';
 
 @Component({
@@ -57,7 +57,7 @@ export class CalculadoraJurosCompostosComponent implements OnInit {
         this.form.controls['periodos'].value,
         this.form.controls['tipoTaxaJuros'].value,
         this.form.controls['tipoPeriodo'].value,
-      ).calcularMontanteComAportes();
+      ).calcular();
     }
   }
 }
