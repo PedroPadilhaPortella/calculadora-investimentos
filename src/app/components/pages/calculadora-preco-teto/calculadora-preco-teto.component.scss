@@ -192,7 +192,7 @@ main.calculadora-preco-teto {
       }
 
       .vermelho {
-        color: #28a745;
+        color: #cc0000;
         font-weight: 600;
       }
 
@@ -245,8 +245,12 @@ main.calculadora-preco-teto {
       .card-margem-seguranca {
         grid-area: margem-seguranca;
 
-        .margem-seguranca {
+        .verde {
           color: #28a745;
+        }
+
+        .vermelho {
+          color: #cc0000;
         }
       }
     }

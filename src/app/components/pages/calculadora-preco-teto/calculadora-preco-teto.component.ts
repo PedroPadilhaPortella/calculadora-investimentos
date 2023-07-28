@@ -14,7 +14,7 @@ export class CalculadoraPrecoTetoComponent {
 
   precoTeto!: PrecoTetoBarsiType;
   form: FormGroup = new FormGroup({});
-  isSubmitted = true;
+  isSubmitted = false;
   currentYear = 0
   lastYears = [0, 0, 0]
   innerWidth = 0
