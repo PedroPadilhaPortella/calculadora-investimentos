@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PrecoTetoMedioFormula, PrecoTetoMedioType } from '../../../models/formulas/preco-teto-medio.formula';
 
 @Component({
-  selector: 'app-calculadora-preco-teto',
-  templateUrl: './calculadora-preco-teto.component.html',
-  styleUrls: ['./calculadora-preco-teto.component.scss']
+  selector: 'app-calculadora-preco-teto-medio',
+  templateUrl: './calculadora-preco-teto-medio.component.html',
+  styleUrls: ['./calculadora-preco-teto-medio.component.scss']
 })
-export class CalculadoraPrecoTetoComponent {
+export class CalculadoraPrecoTetoMedioComponent {
 
-  title = 'Calculadora de Preço Teto'
-  description = 'A Calculadora de Preço Teto '
+  title = 'Calculadora de Preço Teto Médio'
+  description = 'A Calculadora de Preço Teto Médio se baseia na média dos proventos dos últimos 3 anos para estimar o preço teto dessa ação para o ano atual. O preço teto pode ser utilizado para guiar seus investimentos, definindo um preço máximo para os seus aportes nos investimentos, com base nos proventos distribuídos.'
 
   precoTeto!: PrecoTetoMedioType;
   form: FormGroup = new FormGroup({});

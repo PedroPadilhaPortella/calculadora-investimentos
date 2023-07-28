@@ -1,6 +1,6 @@
 import { Formula } from "../../interfaces/formula.interface";
 
-export type PrecoTetoBarsiType = {
+export type PrecoTetoMedioType = {
   ticket: string;
   divYield: number;
   media: number;
@@ -9,7 +9,7 @@ export type PrecoTetoBarsiType = {
   margemSeguranca: number;
 }
 
-export class PrecoTetoBarsiFormula implements Formula<PrecoTetoBarsiType> {
+export class PrecoTetoMedioFormula implements Formula<PrecoTetoMedioType> {
 
   constructor(
     private ticket: string,
