@@ -10,12 +10,4 @@ export class HomeComponent {
 
   title = 'Calculadoras'
   description = 'Fácil, rápido e direto no navegador. Conheça calculadoras e simuladores grátis para ajudar você a economizar.'
-
-  constructor(
-    private router: Router,
-  ) { }
-
-  navigate(route: string) {
-    this.router.navigateByUrl(route);
-  }
 }

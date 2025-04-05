@@ -3,30 +3,35 @@
 
   <div class="cards">
 
-    <app-card (click)="navigate('juros-compostos')"
+    <app-card
       card-image="../../../../assets/images/juros-compostos.png"
-      card-title="Calculadora de Juros Compostos">
-    </app-card>
+      card-title="Calculadora de Juros Compostos"
+      url="juros-compostos" 
+    />
     
-    <app-card (click)="navigate('reserva-de-emergencia')"
+    <app-card
       card-image="../../../../assets/images/reserva-de-emergencia.png"
-      card-title="Calculadora de Reserva de Emergência">
-    </app-card>
+      card-title="Calculadora de Reserva de Emergência" 
+      url="reserva-de-emergencia"
+      />
 
-    <app-card (click)="navigate('preco-teto-medio')"
+    <app-card
       card-image="../../../../assets/images/preco-teto-medio.png"
-      card-title="Calculadora de Preço Teto Médio">
-    </app-card>
+      card-title="Calculadora de Preço Teto Médio"
+      url="preco-teto-medio"
+    />
 
-    <app-card (click)="navigate('preco-teto')"
+    <app-card
       card-image="../../../../assets/images/preco-teto-atual.png"
-      card-title="Calculadora de Preço Teto (Método Bazin)">
-    </app-card>
+      card-title="Calculadora de Preço Teto (Método Bazin)" 
+      url="preco-teto" [disabled]="true"
+    />
 
-    <app-card (click)="navigate('preco-teto-projetivo')"
+    <app-card
       card-image="../../../../assets/images/preco-teto-projetivo.png"
-      card-title="Calculadora de Preço Teto Projetivo">
-    </app-card>
+      card-title="Calculadora de Preço Teto Projetivo" 
+      url="preco-teto-projetivo" [disabled]="true"
+    />
     
   </div>
 </main>

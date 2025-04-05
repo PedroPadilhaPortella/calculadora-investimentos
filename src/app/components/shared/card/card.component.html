@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" (click)="navigate()" [style.cursor]="(disabled? 'not-allowed' :'pointer')">
   <img [src]="cardImage" [alt]="cardTitle">
   <h3 class="card-title">{{cardTitle}}</h3>
 </div>
