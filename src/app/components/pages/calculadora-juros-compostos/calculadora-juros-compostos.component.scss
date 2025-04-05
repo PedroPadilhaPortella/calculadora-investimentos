@@ -207,29 +207,42 @@ main.calculadora-juros-compostos {
 
       .card-valor-total {
         grid-area: total;
-
-        .valor-total {
-          color: #6c757d;
-        }
       }
 
       .card-valor-investido {
         grid-area: investido;
-
-        .valor-investido {
-          color: #0077bd;
-        }
       }
 
       .card-total-juros {
         grid-area: juros;
-
-        .total-juros {
-          color: #28a745;
-        }
       }
     }
+
+    .investment-table {
+      font-family: "Roboto Condensed", sans-serif;
+      border: 1px solid #dee2e6;
+      background-color: #fff;
+      border-radius: 0.25rem;
+      border-spacing: 1.5rem;
+      table-layout: fixed;
+      text-align: center;
+      margin: 2rem auto;
+      color: #6c757d;
+      padding: 1rem;
+    }
   }
+}
+
+.valor-total {
+  color: #6c757d;
+}
+
+.valor-investido {
+  color: #0077bd;
+}
+
+.total-juros {
+  color: #28a745;
 }
 
 /* Mobile Version */
@@ -240,7 +253,8 @@ main.calculadora-juros-compostos {
       display: flex;
       flex-direction: column;
 
-      .btn, .link {
+      .btn,
+      .link {
         width: 100%;
       }
     }
@@ -250,7 +264,7 @@ main.calculadora-juros-compostos {
       h3 {
         text-align: center;
       }
-      
+
       .cards-results {
         display: flex;
         flex-direction: column;

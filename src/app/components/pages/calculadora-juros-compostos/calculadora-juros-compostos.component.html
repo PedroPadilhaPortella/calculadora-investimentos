@@ -79,5 +79,24 @@
         </span>
       </div>
     </div>
+
+    <table class="investment-table">
+      <thead>
+        <tr>
+          <th>Período</th>
+          <th>Montante Total</th>
+          <th>Rendimentos Totais</th>
+          <th>Valor total Investido</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let result of jurosComposto.tabelaDados; let periodo = index">
+        <tr>
+          <td>{{ periodo + 1 }}</td>
+          <td class="valor-total">{{ result.montanteTotal | currency:'BRL' }}</td>
+          <td class="total-juros">{{ result.rendimentoTotal | currency:'BRL' }}</td>
+          <td class="valor-investido">{{ result.investimentoTotal | currency:'BRL' }}</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </main>
