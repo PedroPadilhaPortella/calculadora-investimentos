@@ -16,17 +16,16 @@ export class ReservaDeEmergenciaFormula implements Formula<ReservaType> {
     private custoFixo: number,
     private salario: number,
     private economiaMensal: number,
-  ) {}
+  ) { }
 
   calcular(): ReservaType {
     let reservaMeses = 0
     let reservaDeEmergencia = 0
-    let profissao = '';
 
-    if(this.profissao === Profissoes.FUNCIONARIO_PUBLICO) {
+    if (this.profissao === Profissoes.FUNCIONARIO_PUBLICO) {
       reservaMeses = 3;
       reservaDeEmergencia = this.custoFixo * reservaMeses;
-    } else if(this.profissao === Profissoes.CLT) {
+    } else if (this.profissao === Profissoes.CLT) {
       reservaMeses = 6;
       reservaDeEmergencia = this.custoFixo * reservaMeses;
     } else {
@@ -34,14 +33,14 @@ export class ReservaDeEmergenciaFormula implements Formula<ReservaType> {
       reservaDeEmergencia = this.custoFixo * reservaMeses;
     }
 
-    const tempoReservaEmergencia = Math.ceil(
-      reservaDeEmergencia / (this.salario * (this.economiaMensal / 100)));
+    const tempoReservaEmergencia = Math.ceil(reservaDeEmergencia / this.economiaMensal);
+    const valorGuardado = Math.round((this.economiaMensal / this.salario) * 100);
 
     return {
       profissao: this.profissao,
       reservaMeses,
       reservaDeEmergencia,
-      valorGuardado: this.economiaMensal,
+      valorGuardado,
       tempoReservaEmergencia,
     }
   }
